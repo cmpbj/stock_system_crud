@@ -18,15 +18,13 @@ services:
     volumes:
       - ./backend:/app
     environment:
-      DATABASE_URL: postgresql://user:password@postgres/mydatabase
+      DATABASE_URL: postgresql://postgres:postgres@postgres/mydatabase
     ports:
       - "8000:8000"
     depends_on:
       - postgres
     networks:
       - mynetwork
-
-  frontend:
 
 networks:
   mynetwork:
