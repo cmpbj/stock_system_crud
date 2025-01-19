@@ -6,8 +6,8 @@ class ProductBase(BaseModel):
     name: str
     description: Optional[str] = None
     price: PositiveFloat
-    categoria: str
-    email_fornecedor: EmailStr
+    category: str
+    supplier_email: EmailStr
 
 class ProductCreate(ProductBase):
     pass
@@ -23,5 +23,5 @@ class ProductUpdate(ProductBase):
     name: Optional[str] = None
     description: Optional[str] = None
     price: Optional[PositiveFloat] = None
-    categoria: Optional[str] = None
-    email_fornecedor: Optional[EmailStr] = None
+    category: Optional[str] = None
+    supplier_email: Optional[EmailStr] = None
