@@ -33,48 +33,48 @@ This project is a **Stock Management System** that allows users to manage produc
 - Pandas
 - Requests
 
-## Installation
+### Usage
 
-### Backend
-1. Clone the repository:
+#### Prerequisites
+Ensure you have Docker and Docker Compose installed on your system. If not, follow the installation instructions for your operating system on the [Docker website](https://www.docker.com/).
+
+#### Instructions
+
+1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/stock-management.git
-   cd stock-management/backend
-   ```
-2. Create a virtual environment and activate it:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Start the backend server:
-   ```bash
-   uvicorn main:app --reload
+   git clone https://github.com/cmpbj/stock_system_crud.git
+   cd stock-management
    ```
 
-### Frontend
-1. Navigate to the frontend directory:
+2. **Build and Start the Services**
+   Use the `docker-compose` command to build and start all the services defined in the `docker-compose.yml` file:
    ```bash
-   cd ../frontend
+   docker-compose up
    ```
-2. Create a virtual environment and activate it:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Start the frontend:
-   ```bash
-   streamlit run app.py
-   ```
+   This will:
+   - Set up a PostgreSQL database with the specified user, password, and database name.
+   - Build and run the backend service, exposing it on port `8000`.
+   - Build and run the frontend service, exposing it on port `8501`.
 
-## Usage
+3. **Access the Services**
+   - **Backend**: Open your browser or use a tool like `curl` to access the backend API at [http://localhost:8000](http://localhost:8000).
+   - **Frontend**: Open your browser and navigate to [http://localhost:8501](http://localhost:8501) to access the frontend application.
+
+4. **Stopping the Services**
+   To stop the running containers, press `Ctrl+C` in the terminal where the services are running, then use:
+   ```bash
+   docker-compose down
+   ```
+   This will stop and remove all containers, networks, and volumes created by `docker-compose`.
+
+#### Additional Notes
+- **Persistent Data**: The PostgreSQL database data is stored in a Docker volume named `postgres_data`. This ensures data persistence across container restarts.
+- **Modifying Code**: Since the `backend` and `frontend` services mount the local directories (`./backend` and `./frontend`), any changes you make to the code will be reflected immediately in the running containers (hot-reloading is enabled).
+- **Logs**: To view logs for a specific service, use:
+  ```bash
+  docker-compose logs <service_name>
+  ```
+  Replace `<service_name>` with `backend`, `frontend`, or `postgres`.
 
 ### Backend
 - The backend API will be available at `http://localhost:8000`.
