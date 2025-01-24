@@ -70,14 +70,12 @@ with st.expander("View Products"):
                     ]
                 ]
 
-                # Exibe o DataFrame sem o índice
                 st.write(df.to_html(index=False), unsafe_allow_html=True)
             else:
                 st.info("No products found.")
         else:
             show_response_message(response)
 
-# Obter Detalhes de um Produto
 with st.expander("Get Details of a Product"):
     get_id = st.number_input("Product ID", min_value=1, format="%d")
     if st.button("Search Product"):
